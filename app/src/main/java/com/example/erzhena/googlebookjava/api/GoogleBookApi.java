@@ -10,7 +10,7 @@ import rx.Observable;
 
 public class GoogleBookApi {
 
-    public Observable<BookData> getBooks() {
+    public Observable<BookData> getDefaultBooks() {
         Retrofit retrofit = new Retrofit.Builder()
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -19,6 +19,18 @@ public class GoogleBookApi {
 
         IBookService bookService = retrofit.create(IBookService.class);
 
-        return bookService.getBooksData();
+        return bookService.getDefaultBooksData();
+    }
+
+    public Observable<BookData> getDefaultBooks1(String s) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl("https://www.googleapis.com/books/v1/volumes/")
+                .build();
+
+        IBookService bookService = retrofit.create(IBookService.class);
+
+        return bookService.getSearchBooksData(s);
     }
 }

@@ -76,6 +76,7 @@
         android:layout_width="100dp"
         android:scaleType="centerCrop"
         android:src="@drawable/if_084"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp" />
 
 </LinearLayout>

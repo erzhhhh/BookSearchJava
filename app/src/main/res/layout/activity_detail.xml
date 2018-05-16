@@ -10,61 +10,63 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/detail_layout"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
 
 
         <ImageView
-            android:layout_marginTop="5dp"
             android:id="@+id/detail_image"
             android:layout_height="258dp"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:scaleType="fitCenter" />
 
 
         <TextView
+            android:gravity="center"
             android:id="@+id/detail_date"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:gravity="center" />
+            android:layout_width="match_parent" />
 
         <TextView
-            android:id="@+id/detail_author"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
             android:gravity="center"
-            android:layout_gravity="center_vertical"/>
+            android:id="@+id/detail_author"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" />
 
         <TextView
             android:ellipsize="end"
+            android:gravity="center"
             android:id="@+id/detail_title"
+            android:layout_gravity="center_vertical"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:maxLines="3"
             android:textColor="@color/textPrimary"
             android:textSize="16sp"
-            tools:text="Title"
-            android:gravity="center"
-            android:layout_gravity="center_vertical"/>
+            tools:text="Title" />
 
-        <View style="@style/Divider"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
+        <View
+            style="@style/Divider"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp" />
 
         <TextView
             android:ellipsize="end"
+            android:gravity="center"
             android:id="@+id/detail_text"
+            android:layout_gravity="center_vertical"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:textSize="15sp"
-            android:gravity="center"
-            android:layout_gravity="center_vertical"/>
+            android:textSize="15sp" />
 
-        <View style="@style/Divider"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
+        <View
+            style="@style/Divider"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp" />
 
         <TextView
             android:autoLink="all"
@@ -72,6 +74,7 @@
             android:id="@+id/detail_exp"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:text="@string/moreInfo"
             android:textSize="15sp" />
 
         <TextView
@@ -79,9 +82,8 @@
             android:ellipsize="end"
             android:id="@+id/detail_link"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:textSize="15sp"
             android:layout_marginBottom="10dp"
-            android:text="@string/moreInfo"/>
+            android:layout_width="match_parent"
+            android:textSize="15sp" />
     </LinearLayout>
 </ScrollView>

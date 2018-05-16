@@ -19,15 +19,15 @@
             android:ellipsize="end"
             android:gravity="left"
             android:id="@+id/book_title"
+            android:layout_gravity="center_vertical"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_gravity="center_vertical"
             android:maxLines="2"
             android:textColor="@color/textPrimary"
             android:textSize="16sp"
-            tools:text="Title"
-            tools:ignore="NestedWeights,RtlHardcoded" />
+            tools:ignore="NestedWeights,RtlHardcoded"
+            tools:text="Title" />
 
         <TextView
             android:ellipsize="end"
@@ -66,18 +66,18 @@
 
         <View
             style="@style/Divider"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp" />
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp" />
     </LinearLayout>
 
 
     <ImageView
         android:id="@+id/thumbnail"
         android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_width="100dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/if_084"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp" />
+        android:src="@drawable/if_084" />
 
 </LinearLayout>

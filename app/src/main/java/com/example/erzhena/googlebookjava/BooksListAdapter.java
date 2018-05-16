@@ -1,10 +1,6 @@
 package com.example.erzhena.googlebookjava;
 
 import android.content.Context;
-import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +11,8 @@ import android.widget.TextView;
 import com.example.erzhena.googlebookjava.model.entity.Item;
 import com.squareup.picasso.Picasso;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 
 public class BooksListAdapter extends ArrayAdapter<Item> {
@@ -38,6 +34,10 @@ public class BooksListAdapter extends ArrayAdapter<Item> {
         String title = item.getVolumeInfo().getTitle();
         titlTextView.setText(title);
 
+        TextView authorTextView = (TextView) convertView.findViewById(R.id.authors);
+        Object[] authors = item.getVolumeInfo().getAuthors().toArray();
+        authorTextView.setText(Arrays.toString(authors).replaceAll("\\[|\\]", ""));
+
         TextView descTextView = (TextView) convertView.findViewById(R.id.book_desc);
         String desc = item.getVolumeInfo().getDescription();
         descTextView.setText(desc);
@@ -50,7 +50,8 @@ public class BooksListAdapter extends ArrayAdapter<Item> {
         try {
             String thumbnail = item.getVolumeInfo().getImageLinks().getSmallThumbnail();
             Picasso.get().load(thumbnail).into(picture);
-        } catch (NullPointerException e) {}
+        } catch (NullPointerException e) {
+        }
 
         return convertView;
     }

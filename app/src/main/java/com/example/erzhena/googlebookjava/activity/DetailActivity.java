@@ -6,26 +6,25 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.erzhena.googlebookjava.R;
 import com.squareup.picasso.Picasso;
+import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity {
 
-    private TextView detail_URL;
+    private TextView detailURL;
     String tURL;
-    private TextView detail_author;
-    String tAuthor;
-    private TextView detail_title;
+    private TextView detailAuthorTextView;
+    ArrayList<String> tAuthor;
+    private TextView detailTitleTextView;
     String tTitle;
-    private TextView detail_desc;
+    private TextView detailDesc;
     String tDesc;
-    private TextView detail_date;
+    private TextView detailDateTextView;
     String tDate;
-    private ImageView detail_image;
+    private ImageView detailImage;
     String tThumb;
     private Uri mCurrentNewsUri;
-    String prevActivity;
     String tSource;
 
     @Override
@@ -45,10 +44,10 @@ public class DetailActivity extends AppCompatActivity {
         String dDate = intent.getStringExtra("CURRENT_DATE");
         String dThumb = intent.getStringExtra("CURRENT_THUMB");
         String dURL = intent.getStringExtra("CURRENT_URL");
-        String dAuthor = intent.getStringExtra("CURRENT_AUTHOR");
         String dSource = intent.getStringExtra("CURRENT_SOURCE");
+        ArrayList<String> authors = getIntent().getStringArrayListExtra("CURRENT_AUTHOR");
 
-        tAuthor = dAuthor;
+        tAuthor = authors;
         tTitle = dTitle;
         tDesc = dDesc;
         tDate = dDate;
@@ -56,35 +55,38 @@ public class DetailActivity extends AppCompatActivity {
         tURL = dURL;
         tSource = dSource;
 
-        detail_date = (TextView) findViewById(R.id.detail_date);
-        detail_date.setText(dDate);
+        detailDateTextView = (TextView) findViewById(R.id.detail_date);
+        detailDateTextView.setText(dDate);
 
-        detail_author = (TextView) findViewById(R.id.detail_author);
-        detail_author.setText(dAuthor);
+        detailAuthorTextView = (TextView) findViewById(R.id.detail_author);
+        detailAuthorTextView.setText("");
+        for (int j = 0; j < authors.size(); j++) {
+            detailAuthorTextView.append(authors.get(j) + ", ");
+        }
 
-        detail_title = (TextView) findViewById(R.id.detail_title);
-        detail_title.setText(dTitle);
+        detailTitleTextView = (TextView) findViewById(R.id.detail_title);
+        detailTitleTextView.setText(dTitle);
 
-        detail_desc = (TextView) findViewById(R.id.detail_text);
-        detail_desc.setText(dDesc);
+        detailDesc = (TextView) findViewById(R.id.detail_text);
+        detailDesc.setText(dDesc);
 
-        detail_URL = (TextView) findViewById(R.id.detail_link);
-        detail_URL.setText(dURL);
+        detailURL = (TextView) findViewById(R.id.detail_link);
+        detailURL.setText(dURL);
 
-        detail_image = (ImageView) findViewById(R.id.detail_image);
-        Picasso.get().load(dThumb).into(detail_image);
+        detailImage = (ImageView) findViewById(R.id.detail_image);
+        Picasso.get().load(dThumb).into(detailImage);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
-    public boolean onSupportNavigateUp(){
+    public boolean onSupportNavigateUp() {
         finish();
         return true;
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         finish();
     }
 }

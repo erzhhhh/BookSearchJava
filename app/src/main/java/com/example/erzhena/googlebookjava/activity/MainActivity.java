@@ -19,9 +19,8 @@ import com.example.erzhena.googlebookjava.R;
 import com.example.erzhena.googlebookjava.contracts.IBookPresenter;
 import com.example.erzhena.googlebookjava.contracts.IBookView;
 import com.example.erzhena.googlebookjava.model.entity.Item;
-
+import java.util.ArrayList;
 import java.util.List;
-
 import static android.view.KeyEvent.KEYCODE_ENTER;
 
 public class MainActivity extends AppCompatActivity implements IBookView {
@@ -33,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements IBookView {
     private TextView oopsTextView;
     private BooksListAdapter adapter;
     private ProgressBar loadingIndicator;
+    private List<String> authors;
 
 
     @Override
@@ -72,22 +72,24 @@ public class MainActivity extends AppCompatActivity implements IBookView {
             presenter.getDefaultBooksData(false);
 
             booksListView.setOnItemClickListener((adapterView, view, i, l) -> {
-                Item item= adapter.getItem(i);
+                Item item = adapter.getItem(i);
                 String title = item.getVolumeInfo().getTitle();
                 String desc = item.getVolumeInfo().getDescription();
                 String thumb = item.getVolumeInfo().getImageLinks().getThumbnail();
-                List<String> authors = item.getVolumeInfo().getAuthors();
+
+                authors = new ArrayList<String>();
+                authors.addAll(item.getVolumeInfo().getAuthors());
                 String date = item.getVolumeInfo().getPublishedDate();
                 String url = item.getVolumeInfo().getInfoLink();
 
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-//                intent.putStringArrayListExtra("AUTHOR", authors);
                 intent.putExtra("CURRENT_TITLE", title);
                 intent.putExtra("CURRENT_DESC", desc);
                 intent.putExtra("CURRENT_DATE", date);
                 intent.putExtra("CURRENT_URL", url);
                 intent.putExtra("CURRENT_THUMB", thumb);
-                intent.putExtra("ACTIVITY","main");
+                intent.putStringArrayListExtra("CURRENT_AUTHOR", (ArrayList<String>) authors);
+                intent.putExtra("ACTIVITY", "main");
 
                 startActivity(intent);
             });

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">GoogleBookJava</string>
     <string name="insert">Enter book title</string>
+    <string name="moreInfo">More info here : </string>
 </resources>

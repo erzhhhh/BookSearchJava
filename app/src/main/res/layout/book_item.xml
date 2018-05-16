@@ -26,7 +26,8 @@
             android:maxLines="2"
             android:textColor="@color/textPrimary"
             android:textSize="16sp"
-            tools:text="Title" />
+            tools:text="Title"
+            tools:ignore="NestedWeights,RtlHardcoded" />
 
         <TextView
             android:ellipsize="end"
